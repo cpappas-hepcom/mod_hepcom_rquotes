@@ -9,7 +9,7 @@ Hepcom Rquotes Rotator Module for Joomla 1.5
 
 ###Download
 
-[mod_rquotes_hepcom_1.5.4.zip](https://github.com/cpappas-hepcom/mod_rquotes_hepcom/blob/master/mod_rquotes_hepcom_1.5.4.zip?raw=true)
+[mod_rquotes_hepcom_1.5.4.zip](https://github.com/cpappas-hepcom/mod_hepcom_rquotes/blob/master/mod_rquotes_hepcom_1.5.4.zip?raw=true)
 
 
 Credits
