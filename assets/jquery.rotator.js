@@ -1,8 +1,10 @@
 /**
  *  Quote Rotator plugin for jQuery
  *  @author   Chris Pappas <cpappas@hepcom.ca>
- *  @version  0.2
- *  @date     2011-02-09
+ *  @version  0.3
+ *  @date     2011-05-09
+ *
+ *  Added features to figure out max height of all elements and set container element's height to match
  */
 ;(function($) {
   $.fn.rotateQuotes = function(options) {
@@ -14,6 +16,19 @@
     return this.each(function() {
       
           var blocks = $(this).children();
+          
+          maxHeight = 0;
+          
+          // loop through each of the blocks and set the height if it's larger than the current one
+          blocks.each(function() {
+            var height = $(this).outerHeight(true);
+            if (height > maxHeight) {
+              maxHeight = height;
+            }
+          });
+          
+          // now set the containing element to have the matching max height
+          $(this).height(maxHeight);
         
           if (blocks.size() > 1) {
             blocks.first().show();        // make sure the first one is shown
