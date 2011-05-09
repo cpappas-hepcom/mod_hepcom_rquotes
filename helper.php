@@ -23,9 +23,26 @@ function renderRquote(&$rquote, &$params)
 	}
 //---------------------------------------------------------------------------------------------------------------------------------------------------	
 
+// handles splitting a pipe-delimited set of category id's into an array
+// and then generating a set of catid = x OR catid = y clauses to the SQL query
+function getCatSelect($category) {
+
+  $cats = explode('|', $category);
+  
+  $cats_sel = array();
+  foreach($cats as $cat) {
+    $cats_sel[] = ' catid = ' . $cat;
+  }
+  
+  return implode(' OR ', $cats_sel);
+}
+
 function getAllQuotes($category) {
+  
+  $cats = self::getCatSelect($category);
+  
 	$db =& JFactory::getDBO(); 	
-	$query = "SELECT * FROM #__rquotes WHERE published = '1' AND catid = {$category}";
+	$query = "SELECT * FROM #__rquotes WHERE published = '1' AND ({$cats})";
 	
 	$db->setQuery( $query );
 	$rows = $db->loadObjectList();
